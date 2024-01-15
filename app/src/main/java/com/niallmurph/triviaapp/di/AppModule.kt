@@ -1,6 +1,7 @@
 package com.niallmurph.triviaapp.di
 
 import com.niallmurph.triviaapp.network.QuestionApi
+import com.niallmurph.triviaapp.repository.QuestionRepository
 import com.niallmurph.triviaapp.util.Constants
 import dagger.Module
 import dagger.Provides
@@ -14,6 +15,10 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object AppModule {
+
+    @Singleton
+    @Provides
+    fun providesQuestionRepository(api : QuestionApi) = QuestionRepository(api)
 
     @Singleton
     @Provides
